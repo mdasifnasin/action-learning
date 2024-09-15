@@ -15,7 +15,7 @@ jobs:
               uses: actions/upload-artifact@v4
               with:
                 name: A Python File
-                path: add_numbers.py 
+                path: /home/runner/work/action-learning/action-learning/add_numbers.py 
 
     pre-job-test:
         runs-on: ubuntu-latest
