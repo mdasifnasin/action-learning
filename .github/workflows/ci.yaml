@@ -1,15 +1,17 @@
-name: CI Actions
-
+name: CI_Actions
 on: push
-
 jobs:
-    unit-testing:
+    first_job:
         runs-on: ubuntu-latest
-        steps:
-            - name: CHeckout to My Repo
-              uses: actions/checkout@v4
-            - name: Welcome Message
-              uses: echo "This is The welcome Message"
-            - name: Listing down All the files which are oresent in the repo
-              uses: ls -a
+        steps:              
+            - name: Checkout
+              uses: actions/checkout@v4.1.7
 
+            - name: Welcome Message
+              uses: echo "Hello Listing All the Files"
+            
+            - name: Listing down the files
+              run:  ls -a
+
+            - name: Viewinf the file
+              run:  less README.md
