@@ -4,14 +4,14 @@ jobs:
     first_job:
         runs-on: ubuntu-latest
         steps:              
-            - name: Checkout
-              uses: actions/checkout@v4.1.7
+        - name: Checkout
+          uses: actions/checkout@v4.1.7
 
-            - name: Welcome Message
-              uses: echo "Hello Listing All the Files"
+        - name: Welcome Message
+          # uses: echo "Hello Listing All the Files"
             
-            - name: Listing down the files
-              run:  ls -a
+        - name: Listing down the files
+          run:  ls -a
 
-            - name: Viewinf the file
-              run:  less README.md
+        - name: Viewinf the file
+          run:  less README.md
