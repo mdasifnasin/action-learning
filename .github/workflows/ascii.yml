@@ -36,9 +36,17 @@ jobs:
         runs-on: ubuntu-latest
         needs: pre-job-test
         steps:
-          - name: End of the Process
-            run : |
-              python -v
-              ./python add_numbers.py
-              sleep 60
+        - name: Download
+          uses: actions/download-artifact@v4
+          with:
+            name: A Python File
+        - name: Running the python file
+          run:  |
+            python -v
+            python add_numbers.py
+            exit
+            env
+            
+
+
 
