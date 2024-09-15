@@ -1,0 +1,15 @@
+name: CI Actions
+
+on: push
+
+jobs:
+    unit-testing:
+        runs-on: ubuntu-latest
+        steps:
+            - name: CHeckout to My Repo
+              uses: actions/checkout@v4
+            - name: Welcome Message
+              uses: echo "This is The welcome Message"
+            - name: Listing down All the files which are oresent in the repo
+              uses: ls -a
+
