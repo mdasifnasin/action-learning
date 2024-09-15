@@ -5,8 +5,12 @@ jobs:
     acsii-jobs:
         runs-on: ubuntu-latest
         steps:
+            - name: Checkout Repo
+              uses: actions/checkout@v4
+            
             - name: Running the Scripts
               run: |
+                ls -ltra
                 chmod +X script.sh
                 ./script.sh
-                
+
