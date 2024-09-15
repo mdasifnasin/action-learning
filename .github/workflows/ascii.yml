@@ -15,15 +15,22 @@ jobs:
                 ./script.sh
     pre-job-test:
         runs-on: ubuntu-latest
+        needs: acsii-jobs
         steps:
             - name: Printing the message
               run: |
                 hostnamectl
                 ifconfig
                 uname -r
+                sleep 30
     porst-job:
         runs-on: ubuntu-latest
+        needs: pre-job-test
         steps:
           - name: End of the Process
-            run : init 6
-            
+            run : |
+              python -v
+              node -v
+              terraform -v
+              npm -v
+
