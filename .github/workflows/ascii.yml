@@ -1,0 +1,12 @@
+name : Ruunig the Script
+on: push
+
+jobs:
+    acsii-jobs:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Running the Scripts
+              run: |
+                chmod +X script.sh
+                ./script.sh
+                
