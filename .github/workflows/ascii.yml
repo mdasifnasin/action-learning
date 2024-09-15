@@ -15,7 +15,7 @@ jobs:
               uses: actions/upload-artifact@v4
               with:
                 name: A Python File
-                path: /home/runner/work/action-learning/action-learning/add_numbers.py 
+                path: add_numbers.py 
 
     pre-job-test:
         runs-on: ubuntu-latest
@@ -39,6 +39,6 @@ jobs:
           - name: End of the Process
             run : |
               python -v
-              python add_numbers.py
+              ./python add_numbers.py
               sleep 60
 
