@@ -11,6 +11,6 @@ jobs:
             - name: Running the Scripts
               run: |
                 ls -ltra
-                chmod +X script.sh
+                chmod +x script.sh
                 ./script.sh
 
