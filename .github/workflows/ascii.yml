@@ -13,4 +13,17 @@ jobs:
                 ls -ltra
                 chmod +x script.sh
                 ./script.sh
-
+    pre-job-test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Printing the message
+              run: |
+                hostnamectl
+                ifconfig
+                uname -r
+    porst-job:
+        runs-on: ubuntu-latest
+        steps:
+          - name: End of the Process
+            run : init 6
+            
