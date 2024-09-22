@@ -1,0 +1,14 @@
+name: Exploring VAriable and Secrets
+on: push
+jobs:
+    Docker-Publish:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Docker Login
+              env:
+                DOCKER_USERNAME: mdasifnasim
+                DOCKER_IMAGE: github-actions-ngnix
+                DOCKER_REG: docker.io
+              run: echo docker build -t ${{ env.DOCKER_REG }}/${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}:latest
+
+    

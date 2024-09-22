@@ -1,51 +1,51 @@
-name : Ruunig the Script
-on: push
+# name : Ruunig the Script
+# on: push
 
-jobs:
-    acsii-jobs: #(Job_id or )
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout Repo
-              uses: actions/checkout@v4
+# jobs:
+#     acsii-jobs: #(Job_id or )
+#         runs-on: ubuntu-latest
+#         steps:
+#             - name: Checkout Repo
+#               uses: actions/checkout@v4
             
-            - name: Running the Scripts
-              run: echo -e 'a = 5\nb = 3\nsum = a + b\nprint("Sum:", sum)' > add_numbers.py
+#             - name: Running the Scripts
+#               run: echo -e 'a = 5\nb = 3\nsum = a + b\nprint("Sum:", sum)' > add_numbers.py
             
-            - name: Upload
-              uses: actions/upload-artifact@v4
-              with:
-                name: A Python File
-                path: add_numbers.py 
+#             - name: Upload
+#               uses: actions/upload-artifact@v4
+#               with:
+#                 name: A Python File
+#                 path: add_numbers.py 
 
-    pre-job-test:
-        runs-on: ubuntu-latest
-        needs: acsii-jobs
-        steps:
-            - name: Download
-              uses: actions/download-artifact@v4
-              with:
-                name: A Python File
+#     pre-job-test:
+#         runs-on: ubuntu-latest
+#         needs: acsii-jobs
+#         steps:
+#             - name: Download
+#               uses: actions/download-artifact@v4
+#               with:
+#                 name: A Python File
 
-            - name: Printing the message
-              run: |
-                ls -ltra
-                cat add_numbers.py
-                pwd
-                sleep 60
-    porst-job:
-        runs-on: ubuntu-latest
-        needs: pre-job-test
-        steps:
-        - name: Download
-          uses: actions/download-artifact@v4
-          with:
-            name: A Python File
-        - name: Running the python file
-          run:  |
-            python -v
-            python add_numbers.py
-            exit
-            env
+#             - name: Printing the message
+#               run: |
+#                 ls -ltra
+#                 cat add_numbers.py
+#                 pwd
+#                 sleep 60
+#     porst-job:
+#         runs-on: ubuntu-latest
+#         needs: pre-job-test
+#         steps:
+#         - name: Download
+#           uses: actions/download-artifact@v4
+#           with:
+#             name: A Python File
+#         - name: Running the python file
+#           run:  |
+#             python -v
+#             python add_numbers.py
+#             exit
+#             env
             
 
 

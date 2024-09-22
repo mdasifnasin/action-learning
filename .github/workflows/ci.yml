@@ -1,14 +1,14 @@
-name: CI_Actions
-on: push
-jobs:
-  first_job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4.1.7
+# name: CI_Actions
+# on: push
+# jobs:
+#   first_job:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4.1.7
 
-      - name: Welcome Message
-        run: |
-           echo "Hello, listing all the files"
-           ls -ltra
-           cat README.md
+#       - name: Welcome Message
+#         run: |
+#            echo "Hello, listing all the files"
+#            ls -ltra
+#            cat README.md
