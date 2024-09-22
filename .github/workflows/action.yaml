@@ -13,6 +13,6 @@ jobs:
                 DOCKER_USERNAME: mdasifnasim
                 DOCKER_IMAGE: github-actions-ngnix
                 DOCKER_REG: docker.io
-              run: echo docker build -t ${{ env.DOCKER_REG }}/${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}:latest
+              run: echo docker build -t $DOCKER_REG/$DOCKER_USERNAME/$DOCKER_IMAGE:latest
 
     
