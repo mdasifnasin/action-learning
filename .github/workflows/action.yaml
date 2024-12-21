@@ -34,4 +34,4 @@ jobs:
       # Step 5: Build Docker Image (Nginx)
       - name: Build Docker Image
         run: |
-          docker buildx build -t $DOCKER_USERNAME/nginx_image ./Docker --push
+          docker buildx build -t mdasifnasim/nginx_image:latest ./Docker --push
