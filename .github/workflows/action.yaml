@@ -1,9 +1,10 @@
 name: Build, Lint and Publish Nginx Docker Image
 
-on:
-  push:
-    branches:
-      - main  # Trigger on push to the main branch
+# on:
+#   push:
+#     branches:
+#       - main  # Trigger on push to the main branch
+on: push
 
 jobs:
   docker-lint-build-push:
