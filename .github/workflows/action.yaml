@@ -1,9 +1,11 @@
 name: Exploring Variables and Secrets
 
-on:
-  push:
-    branches:
-      - main  # or any other branch you want to trigger on
+# on:
+#   push:
+#     branches:
+#       - main  # or any other branch you want to trigger on
+
+on: push
 
 jobs:
   Docker-Publish:
