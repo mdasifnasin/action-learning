@@ -1,18 +1,42 @@
-name: Exploring VAriable and Secrets
-on: push
-jobs:
-    Docker-Publish:
-        runs-on: ubuntu-latest
-        steps: 
-            - name: Checkout              
-              uses: actions/checkout@v4.1.7
-            - name: Super-Linter
-              uses: super-linter/super-linter@v7.1.0
-            - name: Docker Login
-              env:
-                #DOCKER_USERNAME: mdasifnasim.
-                DOCKER_IMAGE: github-actions-ngnix
-                DOCKER_REG: docker.io
-              run: echo docker build -t $DOCKER_REG/${{ vars.DOCKER_USERNAME }}/$DOCKER_IMAGE/${{ Secrets.DOCKER_PASS}}:latest
+name: Exploring Variables and Secrets
 
+on:
+  push:
+    branches:
+      - main  # or any other branch you want to trigger on
+
+jobs:
+  Docker-Publish:
+    runs-on: ubuntu-latest
     
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Lint the code using Super Linter
+      - name: Super Linter
+        uses: super-linter/super-linter@v7.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GH }}  # Required for reporting status back to GitHub
+        continue-on-error: true  # This makes sure the build continues even if linting fails (optional)
+
+      # Step 3: Docker Login
+      - name: Docker Login
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}  # Docker Hub username from secrets
+          DOCKER_PASS: ${{ secrets.DOCKER_PASS }}  # Docker Hub password or token from secrets
+          DOCKER_REG: docker.io
+        run: |
+          echo $DOCKER_PASS | docker login $DOCKER_REG -u $DOCKER_USERNAME --password-stdin
+
+      # Step 4: Docker Build and Push
+      - name: Docker Build and Publish
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}  # Get Docker username from secrets
+          DOCKER_PASS: ${{ secrets.DOCKER_PASS }}  # Get Docker password from secrets
+          DOCKER_IMAGE: github-actions-nginx
+          DOCKER_REG: docker.io
+        run: |
+          docker build -t $DOCKER_REG/$DOCKER_USERNAME/$DOCKER_IMAGE:latest .
+          docker push $DOCKER_REG/$DOCKER_USERNAME/$DOCKER_IMAGE:latest
